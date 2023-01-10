@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 require('dotenv').config()
 // const DB = 'mongodb://rahul:rahul@ac-metwcnz-shard-00-00.ytwybs1.mongodb.net:27017,ac-metwcnz-shard-00-01.ytwybs1.mongodb.net:27017,ac-metwcnz-shard-00-02.ytwybs1.mongodb.net:27017/?ssl=true&replicaSet=atlas-3qzgej-shard-0&authSource=admin&retryWrites=true&w=majority'
-const DB = 'mongodb://klientsure:pnp2668384@ac-xwqjhkr-shard-00-00.ar6nikh.mongodb.net:27017,ac-xwqjhkr-shard-00-01.ar6nikh.mongodb.net:27017,ac-xwqjhkr-shard-00-02.ar6nikh.mongodb.net:27017/?ssl=true&replicaSet=atlas-u3am8l-shard-0&authSource=admin&retryWrites=true&w=majority'
+// const DB = 'mongodb://klientsure:pnp2668384@ac-xwqjhkr-shard-00-00.ar6nikh.mongodb.net:27017,ac-xwqjhkr-shard-00-01.ar6nikh.mongodb.net:27017,ac-xwqjhkr-shard-00-02.ar6nikh.mongodb.net:27017/?ssl=true&replicaSet=atlas-u3am8l-shard-0&authSource=admin&retryWrites=true&w=majority'
 // const accountSid = "AC01c5b97d2812c77aab3df90f463d8664";
 // const accountSid = "AC2f7faa89075ffbf79f157f8988a044fa";
 const accountSid = process.env.TWILIO_ACCOUNT_SID
@@ -10,7 +10,7 @@ const verifySid = process.env.YOUR_VERIFY_SID;
 const client = require("twilio")(accountSid, authToken);
 
 mongoose.set('strictQuery', false);
-mongoose.connect(DB,{ useNewUrlParser: true, useUnifiedTopology: true }).then(() => {
+mongoose.connect(process.env.DB,{ useNewUrlParser: true, useUnifiedTopology: true }).then(() => {
     console.log("Connection successfull");
  }).catch((e) => console.log("No connection"+e))
 

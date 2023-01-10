@@ -1,13 +1,14 @@
 const express = require('express')
+const dotenv = require("dotenv")
+dotenv.config()
 const app = express()
 const cors = require('cors')
-const PORT = 8000
+const PORT = process.env.PORT||8080
 const login = require('./routes/login') 
 const verify = require('./routes/verify') 
 const { json } = require('express')
 const bodyParser = require("body-parser"); 
 const router = require("./routes/home")
-
 app.use(bodyParser.json());
 app.use(cors())
 app.use(json())
